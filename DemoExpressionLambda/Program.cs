@@ -8,11 +8,22 @@ static bool EstPair(int x)
 
 List<int> nombres = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
 
+
+
+//les types délégués générieuqe func  et action : contenir une fonction
+
+Action<string> print = Console.Writeline
+
 // Les types délégués génériques Func et Action : une variable qui va contenir une fonction.
 
-// Lambda 
+// Lambda
+func<int, bool> fctEstPair = x => x % 2 ==0;;
 
 // Expression lambda en Callback (retour à FindAll)
+list<int> NombresPaire = nombres.FindAll(<int,bool> x => x % 2 == 0)
+    foreach (int x in nombrePairs){
+    Console.WriteLine(x);    
+}
 
 // LINQ et expressions lambda
 
@@ -32,3 +43,25 @@ List<Client> clients = new()
 };
 
 // q1
+list<Client> clientsGatineau = clients.Where(clients => clients.Ville == "Gatineau")
+
+//q2
+list<Client> clientsPrenoms = clients.Select(clients => clients.Prenom)
+
+//q3
+list<Client> clientsTries = clients.OrderBy(clients => clients.Prenom)
+foreach(Client client in clientsTries){
+    print(client)
+}
+    
+
+//q4
+int NbMontrealais = clients.Count(clients => clients.Ville == "Montréal")
+print(NbMontrealaisNbMontrealais)
+
+//q5
+bool clientQuebecExiste = clients.Any(clients => client.ville =="Québec")
+print(clientQuebecExiste)
+    
+//q6
+Client clientA = clients.FirstOrDefault(clients => clients.Prenom[0] == 'A')
